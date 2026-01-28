@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Siva Kalyan — Data Engineer (8+ yrs) | PySpark, Python, AWS | Data Lakes (Snowflake, Databricks) | Airflow | CI/CD" />
+  <title>Siva Kalyan | Data Engineer Portfolio</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a33;
+      --muted:#aab4d4;
+      --text:#eaf0ff;
+      --accent:#6ea8ff;
+      --accent2:#8ef0c7;
+      --border:rgba(255,255,255,.09);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text);
+      background: radial-gradient(1100px 700px at 15% -10%, rgba(110,168,255,.25), transparent 60%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(142,240,199,.16), transparent 55%),
+                  var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 70px}
+    .nav{
+      position:sticky; top:0; z-index:40;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,18,32,.92), rgba(11,18,32,.65));
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{max-width:1100px; margin:0 auto; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:10px}
+    .badge{
+      width:34px; height:34px; border-radius:12px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(110,168,255,.25), rgba(142,240,199,.18));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      font-family: var(--mono);
+      font-weight:700;
+    }
+    .nav a{opacity:.9}
+    .nav a:hover{opacity:1}
+    .navlinks{display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end}
+    .navlinks a{
+      padding:8px 10px; border-radius:12px;
+      border: 1px solid transparent;
+    }
+    .navlinks a:hover{border-color:var(--border); background:rgba(255,255,255,.03)}
+    .hero{
+      padding:38px 0 18px;
+      display:grid; grid-template-columns: 1.25fr .75fr; gap:18px;
+    }
+    @media (max-width: 900px){ .hero{grid-template-columns:1fr} }
+    .card{
+      background: rgba(15,26,51,.72);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+    .card.pad{padding:22px}
+    .h1{
+      font-size: clamp(28px, 3.4vw, 44px);
+      margin:0 0 8px;
+      letter-spacing:-.02em;
+      line-height:1.1;
+    }
+    .sub{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size: 16px;
+      line-height:1.55;
+    }
+    .pillrow{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 0}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: #dfe7ff;
+      font-size: 13px;
+      font-family: var(--mono);
+      white-space:nowrap;
+    }
+    .cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:16px}
+    .btn{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      cursor:pointer;
+      transition: transform .08s ease;
+      font-weight:600;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(110,168,255,.28), rgba(142,240,199,.16));
+      border-color: rgba(110,168,255,.35);
+    }
+    .mono{font-family:var(--mono)}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .col-8{grid-column: span 8}
+    .col-12{grid-column: span 12}
+    @media (max-width: 900px){
+      .col-6,.col-4,.col-8{grid-column: span 12}
+    }
+    .section{margin-top:22px}
+    .section h2{
+      margin:0 0 10px; font-size:20px; letter-spacing:-.01em;
+    }
+    .muted{color:var(--muted)}
+    .list{margin:10px 0 0; padding:0 0 0 18px; color:#dfe7ff}
+    .list li{margin:8px 0; line-height:1.55}
+    .kpi{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+      padding:14px 14px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .kpi strong{display:block; font-size:14px}
+    .kpi span{color:var(--muted); font-size:13px; line-height:1.35}
+    .tag{
+      display:inline-block;
+      font-family:var(--mono);
+      font-size:12px;
+      padding:6px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:#dfe7ff;
+      background: rgba(255,255,255,.02);
+      margin:6px 6px 0 0;
+    }
+    .timeline{display:flex; flex-direction:column; gap:12px; margin-top:10px}
+    .role{
+      padding:16px;
+      border-radius:18px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .role h3{margin:0 0 6px; font-size:16px}
+    .role .meta{color:var(--muted); font-size:13px; margin-bottom:8px}
+    .role .bullets{margin:0; padding-left:18px}
+    .role .bullets li{margin:6px 0; line-height:1.55}
+    .footer{
+      margin-top:26px; padding-top:18px;
+      border-top:1px solid var(--border);
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .sr-only{position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;}
+    .small{font-size:12px}
+    .hr{height:1px; background:var(--border); margin:14px 0}
+    .copyhint{opacity:.85}
+    .copyhint:hover{opacity:1}
+  </style>
+</head>
+
+<body>
+  <!-- Top Nav -->
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="badge">SK</div>
+        <div>
+          <div style="font-weight:800; letter-spacing:-.01em">Siva Kalyan</div>
+          <div class="muted small">Data Engineer • PySpark • AWS • Data Lakes</div>
+        </div>
+      </div>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="card pad">
+        <h1 class="h1">Data Engineer focused on secure, scalable pipelines & data lakes.</h1>
+        <p class="sub">
+          8 years building and supporting data platforms across <span class="mono">banking</span>, healthcare, IT, and retail.
+          Hands-on with <span class="mono">PySpark</span>, <span class="mono">Python</span>, <span class="mono">AWS</span>,
+          orchestration (<span class="mono">Airflow</span>), CI/CD, and modern data lakes
+          (<span class="mono">Snowflake</span>, <span class="mono">Databricks</span>).
+        </p>
+
+        <div class="cta">
+          <!-- Replace href with your real LinkedIn / GitHub / resume link -->
+          <a class="btn primary" href="#case-studies">View Case Studies</a>
+          <a class="btn" href="#contact">Contact</a>
+          <button class="btn" id="copyEmailBtn" aria-label="Copy email">Copy Email</button>
+          <span class="muted small copyhint" id="copyStatus" role="status" aria-live="polite"></span>
+        </div>
+
+        <div class="pillrow" aria-label="Highlights">
+          <span class="pill">✅ Production pipelines (batch + near real-time)</span>
+          <span class="pill">✅ Data quality checks + anomaly detection</span>
+          <span class="pill">✅ Cloud modernization (AWS / Azure / GCP)</span>
+          <span class="pill">✅ CI/CD + automation + operational stability</span>
+        </div>
+      </div>
+
+      <div class="card pad">
+        <div class="kpi">
+          <div>
+            <strong>Core Fit for JPMorgan Data Engineer III</strong>
+            <span>Secure code • system design • resiliency • data lakes • automation</span>
+          </div>
+          <div class="mono" style="opacity:.95">DE III</div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="kpi">
+          <div>
+            <strong>Recent outcomes</strong>
+            <span>Reduced model training time by 30% via automated feature engineering pipelines</span>
+          </div>
+          <div class="mono">-30%</div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="kpi">
+          <div>
+            <strong>Certifications</strong>
+            <span>SnowPro Core • AWS Solutions Architect – Associate</span>
+          </div>
+          <div class="mono">✔</div>
+        </div>
+
+        <div class="pillrow">
+          <span class="tag">Payments & Card</span>
+          <span class="tag">Streaming (Kafka/Spark)</span>
+          <span class="tag">Data Governance</span>
+          <span class="tag">DevOps</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="grid">
+        <div class="card pad col-8">
+          <h2>About</h2>
+          <p class="sub" style="margin-bottom:0">
+            I design and deliver <b>trusted data collection, storage, access, and analytics solutions</b> with an emphasis on
+            <b>security, stability, performance, and scalability</b>. I work closely with cross-functional stakeholders,
+            turning business requirements into reliable pipelines and curated datasets for analytics and ML use-cases.
+          </p>
+        </div>
+        <div class="card pad col-4">
+          <h2>Quick Info</h2>
+          <ul class="list">
+            <li><span class="muted">Name:</span> Siva Kalyan</li>
+            <li><span class="muted">Role:</span> Data Engineer</li>
+            <li><span class="muted">Email:</span> <span class="mono">ksivakalyan2@gmail.com</span></li>
+            <li><span class="muted">Phone:</span> <span class="mono">+1 (913) 735-5419</span></li>
+            <li><span class="muted">Location:</span> United States</li>
+          </ul>
+          <p class="muted small" style="margin:10px 0 0">
+            Replace “LinkedIn” below with your profile link when publishing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities aligned to JD -->
+    <section class="section" id="capabilities">
+      <div class="card pad">
+        <h2>Capabilities aligned to Data Engineer III (JPMC)</h2>
+        <div class="grid">
+          <div class="col-6">
+            <h3 style="margin:0 0 8px; font-size:16px">Build secure, high-quality production code</h3>
+            <ul class="list">
+              <li>Develop and troubleshoot <span class="mono">PySpark/Python</span> ETL and streaming pipelines.</li>
+              <li>Implement robust logging, retries, idempotency, schema validation, and test coverage.</li>
+              <li>Support operational stability with clear runbooks and monitoring.</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <h3 style="margin:0 0 8px; font-size:16px">Automate remediation + improve resiliency</h3>
+            <ul class="list">
+              <li>Automate recurring issues with <span class="mono">CI/CD</span>, alerting, and self-healing workflows.</li>
+              <li>Data quality checks and anomaly detection integrated into pipelines.</li>
+              <li>Performance tuning: partitioning strategies, query optimization, efficient storage formats.</li>
+            </ul>
+          </div>
+
+          <div class="col-6">
+            <h3 style="margin:0 0 8px; font-size:16px">Modern data lakes & cloud</h3>
+            <ul class="list">
+              <li>Hands-on experience with <span class="mono">Snowflake</span>, cloud data lakes, and scalable compute.</li>
+              <li>Cloud modernization: migrating from on-prem to hybrid/multi-cloud architectures.</li>
+              <li>Orchestration with <span class="mono">Airflow/Composer</span> and event-driven services.</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <h3 style="margin:0 0 8px; font-size:16px">Partner with stakeholders</h3>
+            <ul class="list">
+              <li>Translate business requirements into data models (ODS/OLTP + OLAP) and curated datasets.</li>
+              <li>Communicate tradeoffs and designs to technical & non-technical stakeholders.</li>
+              <li>Mentor teammates via code reviews, design reviews, and documentation.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="section" id="case-studies">
+      <div class="grid">
+        <div class="card pad col-12">
+          <h2>Case Studies</h2>
+          <p class="sub" style="margin-bottom:0">
+            These are written to match JPMC’s expectations: system design mindset, secure delivery, stability, and measurable impact.
+          </p>
+        </div>
+
+        <div class="card pad col-6">
+          <h3 style="margin:0 0 6px; font-size:16px">1) Cloud Modernization for Payments & Card Transactions</h3>
+          <div class="meta muted small">Discover Financial / Capital One (after merger) • Snowflake • Azure Data Lake • GCP • Kafka • PySpark</div>
+          <ul class="list">
+            <li>Designed cloud-based, AI-ready architecture for high-volume batch and near real-time analytics.</li>
+            <li>Migrated on-prem data to hybrid Azure–GCP with Snowflake as a governed storage layer for analytics + ML features.</li>
+            <li>Built streaming apps consuming Kafka topics and writing curated streams to <span class="mono">HBase/Cassandra</span>.</li>
+            <li>Embedded data quality checks, schema validation, and drift detection into pipelines.</li>
+            <li><b>Outcome:</b> Automated feature engineering pipelines reduced ML training time by <b>30%</b>.</li>
+          </ul>
+          <div class="pillrow">
+            <span class="tag">Operational Stability</span>
+            <span class="tag">Data Quality</span>
+            <span class="tag">Streaming</span>
+            <span class="tag">Cloud Modernization</span>
+          </div>
+        </div>
+
+        <div class="card pad col-6">
+          <h3 style="margin:0 0 6px; font-size:16px">2) High-Velocity Ingestion + Real-Time Analytics Platform</h3>
+          <div class="meta muted small">Cardinal Health • Flume • Kafka • Spark Streaming (Scala) • GCP Dataproc • Hive/HDFS</div>
+          <ul class="list">
+            <li>Built near real-time ingestion using Flume/Kafka and Spark Streaming for high-velocity supply chain data.</li>
+            <li>Improved Spark performance via partitioning strategies and optimized transformations.</li>
+            <li>Implemented dimensional models (Star/Snowflake) and loaded partitioned Hive tables in Parquet.</li>
+            <li>Applied DevOps practices across Spark/Kafka/HDFS/HBase with monitoring + automated deployments.</li>
+          </ul>
+          <div class="pillrow">
+            <span class="tag">Spark Performance</span>
+            <span class="tag">Data Modeling</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Production Support</span>
+          </div>
+        </div>
+
+        <div class="card pad col-6">
+          <h3 style="margin:0 0 6px; font-size:16px">3) AWS Data Lake + Automated ETL/ELT</h3>
+          <div class="meta muted small">Sanofi • AWS (S3/Glue/Lambda/IAM/CloudWatch) • PySpark • Terraform • Snowflake</div>
+          <ul class="list">
+            <li>Delivered scalable AWS data platforms with high availability and operational monitoring.</li>
+            <li>Automated ingestion from APIs, S3, Snowflake, Teradata, and Kafka streams.</li>
+            <li>Used IaC (Terraform/CloudFormation) for repeatable provisioning and secure delivery.</li>
+            <li>Orchestrated containerized workloads and integrated with CI/CD pipelines.</li>
+          </ul>
+          <div class="pillrow">
+            <span class="tag">AWS</span>
+            <span class="tag">IaC</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Data Lake</span>
+          </div>
+        </div>
+
+        <div class="card pad col-6">
+          <h3 style="margin:0 0 6px; font-size:16px">4) Financial Analytics & ETL Enablement</h3>
+          <div class="meta muted small">OMICS International • Python • SQL • Hive • Tableau • SSIS</div>
+          <ul class="list">
+            <li>Built and supported ETL workflows (batch + basic real-time), improving turnaround time by <b>60%</b> via automation.</li>
+            <li>Optimized SQL, created Hive UDFs, and improved data quality for reporting and KPIs.</li>
+            <li>Partnered with analysts to deliver dashboards and actionable insights.</li>
+          </ul>
+          <div class="pillrow">
+            <span class="tag">Automation</span>
+            <span class="tag">SQL Optimization</span>
+            <span class="tag">Stakeholder Delivery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience (condensed timeline) -->
+    <section class="section" id="experience">
+      <div class="card pad">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+          <div class="role">
+            <h3>Data Engineer — Discover Financial / Capital One (after merger)</h3>
+            <div class="meta">Cloud modernization for payments & card transaction systems • Snowflake • Azure • GCP • Kafka • PySpark</div>
+            <ul class="bullets">
+              <li>Designed scalable ETL and streaming pipelines, ensuring secure and stable data delivery.</li>
+              <li>Implemented data quality validation, schema checks, and drift detection for reliable downstream analytics/ML.</li>
+              <li>Operationalized ML data prep and retrieval workflows; supported Kubernetes-ready ingestion frameworks.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <h3>Data Engineer — Cardinal Health</h3>
+            <div class="meta">High-velocity ingestion & real-time analytics • Spark Streaming • Kafka • GCP Dataproc • Hive/HDFS</div>
+            <ul class="bullets">
+              <li>Built near real-time ingestion and improved Spark performance via partitioning and optimized transforms.</li>
+              <li>Delivered dimensional models and production-grade pipelines with monitoring and automated deployments.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <h3>Data Engineer — Sanofi</h3>
+            <div class="meta">AWS data lake & automated ETL • PySpark • Terraform/CloudFormation • Snowflake/Redshift</div>
+            <ul class="bullets">
+              <li>Built scalable AWS data platform, automated ingestion, and enabled analytics integrations.</li>
+              <li>Implemented IaC and CI/CD practices for consistent delivery and operational stability.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <h3>Data Engineer — OMICS International</h3>
+            <div class="meta">Financial analytics & ETL • Python/SQL/Hive • SSIS • Tableau</div>
+            <ul class="bullets">
+              <li>Automated ETL workflows, improved data quality, and delivered KPI dashboards.</li>
+            </ul>
+          </div>
+
+          <div class="role">
+            <h3>Data Engineer — People Tech Group</h3>
+            <div class="meta">Hadoop ingestion & processing • Spark • Hive • Sqoop • Oozie</div>
+            <ul class="bullets">
+              <li>Supported ingestion and transformation for large datasets; monitored pipelines and improved reliability.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="grid">
+        <div class="card pad col-6">
+          <h2>Technical Skills</h2>
+          <div>
+            <span class="tag">PySpark</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Scala</span><span class="tag">Java</span>
+            <span class="tag">Airflow / Composer</span><span class="tag">Kafka</span><span class="tag">Spark Streaming</span><span class="tag">dbt</span>
+            <span class="tag">Snowflake</span><span class="tag">Databricks</span><span class="tag">Hive</span><span class="tag">HDFS</span>
+            <span class="tag">AWS (S3/EC2/Glue/Lambda/IAM)</span><span class="tag">Azure (ADF/Synapse/ADLS)</span><span class="tag">GCP (Dataproc/BigQuery/GCS)</span>
+            <span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Jenkins</span><span class="tag">Git</span>
+            <span class="tag">Terraform</span><span class="tag">CloudFormation</span>
+          </div>
+
+          <div class="hr"></div>
+
+          <h3 style="margin:0 0 8px; font-size:16px">ETL & Workflow</h3>
+          <p class="muted" style="margin:0">
+            Experience with modern pipelines and orchestration; familiar with enterprise ETL patterns (e.g., Informatica / Ab Initio concepts),
+            and strong hands-on delivery using Python/PySpark + Airflow-style orchestration.
+          </p>
+        </div>
+
+        <div class="card pad col-6">
+          <h2>What I optimize for (JPMC-ready)</h2>
+          <ul class="list">
+            <li><b>Secure SDLC:</b> code reviews, secrets management, least privilege, audit-friendly pipelines.</li>
+            <li><b>Operational Stability:</b> monitoring, alerts, retries, backfills, runbooks, on-call readiness.</li>
+            <li><b>Performance:</b> partitioning, file formats (Parquet), Spark tuning, query optimization.</li>
+            <li><b>Data Quality:</b> schema checks, validation rules, anomaly detection, drift checks.</li>
+            <li><b>Automation:</b> CI/CD, automated remediation, infrastructure as code.</li>
+            <li><b>Stakeholder communication:</b> explain designs, tradeoffs, and outcomes clearly.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="card pad">
+        <h2>Contact</h2>
+        <p class="sub">
+          If you’re hiring for Data Engineer roles focused on secure, scalable pipelines and modern data lakes, I’d love to connect.
+        </p>
+        <div class="grid">
+          <div class="col-6">
+            <div class="kpi">
+              <div>
+                <strong>Email</strong>
+                <span class="mono">ksivakalyan2@gmail.com</span>
+              </div>
+              <a class="btn primary" href="mailto:ksivakalyan2@gmail.com">Email me</a>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="kpi">
+              <div>
+                <strong>LinkedIn</strong>
+                <span class="muted">Add your LinkedIn URL before publishing</span>
+              </div>
+              <a class="btn" href="#" onclick="alert('Replace this link with your LinkedIn URL before publishing.'); return false;">Open LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <div>© <span id="year"></span> Siva Kalyan • Built for JPMC Data Engineer III alignment</div>
+          <div class="muted">One-page • Fast • ATS-friendly content structure</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Set year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Copy email
+    const email = "ksivakalyan2@gmail.com";
+    const btn = document.getElementById("copyEmailBtn");
+    const status = document.getElementById("copyStatus");
+
+    btn.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(email);
+        status.textContent = "Email copied.";
+        setTimeout(()=> status.textContent = "", 1600);
+      }catch(e){
+        status.textContent = "Copy failed — please copy manually.";
+        setTimeout(()=> status.textContent = "", 2000);
+      }
+    });
+  </script>
+</body>
+</html>
